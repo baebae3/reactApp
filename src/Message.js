@@ -1,8 +1,10 @@
 
 
-const Message = (props) => {
+const Message = ({ text }) => {
     return(
-        <div className="compStyle">Hello {props.txt} </div>
+        <div>
+            <div className="position">{text.author}{text.text}</div>
+        </div>
     );
 }
 
