@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import App from './components/App'
+import App from './App'
 import { createTheme } from '@mui/material'
 import { orange, purple } from '@mui/material/colors'
 import { ThemeProvider } from '@emotion/react'

@@ -59,3 +59,53 @@
     display: flex;
     gap: 20px;
 }
+
+.message-style {
+    border: 0px solid #66baf2;
+    border-radius: 25px;
+    margin: 0;
+    padding: 10px;
+    background-color: #66baf2;
+    margin: 5px;
+    text-align: start;
+}
+
+.message-style h3 {
+    padding: 0;
+    margin: 0;
+}
+
+.position {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.blockPosition {
+    display: flex;
+}
+
+.blockPosition__my {
+    justify-content: flex-end;
+}
+
+.blockPosition__any {
+    justify-content: flex-start;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.menu a {
+    color: #fff;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.messengerPanel {
+}
