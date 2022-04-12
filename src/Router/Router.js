@@ -3,15 +3,16 @@ import Chats from '../Pages/Chats'
 import Home from '../Pages/Home'
 import Profile from '../Pages/Profile'
 import '../App.css'
-import ChatList from '../components/ChatList'
 import { useState } from 'react'
 
 const initialChats = {
     id1: {
+        id: 1,
         name: 'chat 1',
         messages: [{ text: 'Chats test', author: 'BOT' }],
     },
     id2: {
+        id: 2,
         name: 'chat 2',
         messages: [
             { text: 'Hello', author: 'Maksim' },
@@ -23,15 +24,6 @@ const initialChats = {
 
 const Router = () => {
     const [chats, setChats] = useState(initialChats)
-
-    const deleteChat = (chatId) => {
-        setChats({
-            [chatId]: {
-                name: '',
-                messages: '',
-            },
-        })
-    }
 
     const addMessage = (chatId, message) => {
         setChats({
@@ -61,13 +53,7 @@ const Router = () => {
                 <Route path="/profile" element={<Profile />} />
                 <Route
                     path="/chats/:chatId"
-                    element={
-                        <Chats
-                            chats={chats}
-                            addMessage={addMessage}
-                            deleteChat={deleteChat}
-                        />
-                    }
+                    element={<Chats chats={chats} addMessage={addMessage} />}
                 />
                 <Route path="*" element={<Chats chats={chats} />} />
             </Routes>

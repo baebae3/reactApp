@@ -6,7 +6,9 @@ function App(props) {
     return (
         <div className="App">
             <header className="App-header">
-                <Router />
+                <React.StrictMode>
+                    <Router />
+                </React.StrictMode>
             </header>
         </div>
     )
