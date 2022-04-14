@@ -25,6 +25,12 @@ const initialChats = {
 const Router = () => {
     const [chats, setChats] = useState(initialChats)
 
+    const deleteChat = (chatId) => {
+        const newChats = { ...chats }
+        delete newChats[chatId]
+        setChats(newChats)
+    }
+
     const addMessage = (chatId, message) => {
         setChats({
             ...chats,
@@ -53,7 +59,13 @@ const Router = () => {
                 <Route path="/profile" element={<Profile />} />
                 <Route
                     path="/chats/:chatId"
-                    element={<Chats chats={chats} addMessage={addMessage} />}
+                    element={
+                        <Chats
+                            chats={chats}
+                            addMessage={addMessage}
+                            deleteChat={deleteChat}
+                        />
+                    }
                 />
                 <Route path="*" element={<Chats chats={chats} />} />
             </Routes>

@@ -9,7 +9,7 @@ import FolderIcon from '@mui/icons-material/Folder'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { Link } from 'react-router-dom'
 
-const ChatList = ({ chats }) => {
+const ChatList = ({ chats, deleteChat }) => {
     console.log('')
     return (
         <List>
@@ -17,7 +17,11 @@ const ChatList = ({ chats }) => {
                 <ListItem
                     key={index}
                     secondaryAction={
-                        <IconButton edge="end" aria-label="delete">
+                        <IconButton
+                            edge="end"
+                            aria-label="delete"
+                            onClick={() => deleteChat(chat)}
+                        >
                             <DeleteIcon />
                         </IconButton>
                     }

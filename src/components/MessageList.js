@@ -10,7 +10,7 @@ const MessageList = ({ chats }) => {
         <div>
             {messages.map((element, index) => {
                 return (
-                    <div className="blockPosition">
+                    <div key={index} className="blockPosition">
                         <div className="message-style" key={index}>
                             <h3>{element.author}</h3>
                             <div className="position">{element.text}</div>
