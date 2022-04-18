@@ -1,4 +1,4 @@
-import { CHECK_BOX, TOGGLE_NAME } from './actions'
+import { CHECK_BOX, TOGGLE_NAME, UPDATE_NAME } from './actions'
 
 const inititalState = {
     showName: true,
@@ -14,6 +14,12 @@ const profileReducer = (state = inititalState, action) => {
             return {
                 ...state,
                 agree: !state.agree,
+            }
+
+        case UPDATE_NAME:
+            return {
+                ...state,
+                name: action.payload,
             }
 
         case TOGGLE_NAME:

@@ -2,13 +2,18 @@ import { TextField, Fab } from '@mui/material'
 import { useState, useRef, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import SendIcon from '@mui/icons-material/Send'
-import Message from '../components/Message'
+import { useDispatch, useSelector } from 'react-redux'
+import { addMessage } from '../store/messages/action'
 
-const ControlPanel = ({ addMessage }) => {
-    // const [messageList, setMessageList] = useState([{}])
+const ControlPanel = () => {
+    const allMessages = useSelector((state) => state.messages.messageList)
+    const dispatch = useDispatch()
     const [inputText, setInputText] = useState('')
+    const authorName = useSelector((state) => state.profile.name)
     const inputRef = useRef(null)
     let { chatId } = useParams()
+
+    const messages = allMessages[chatId] || []
 
     const handleChanger = (event) => {
         setInputText(event.target.value)
@@ -17,14 +22,9 @@ const ControlPanel = ({ addMessage }) => {
     const handleAdd = (event) => {
         let templateObj = {
             text: inputText,
-            author: 'Maksim',
+            author: authorName,
         }
-        // if (!messageList[0].hasOwnProperty('text')) {
-        //     setMessageList([templateObj])
-        // } else {
-        //     setMessageList([...messageList, templateObj])
-        // }
-        addMessage(chatId, templateObj)
+        dispatch(addMessage(chatId, templateObj))
         setInputText('')
         inputRef.current.focus()
     }
@@ -32,44 +32,29 @@ const ControlPanel = ({ addMessage }) => {
     const handleKeyPress = (event) => {
         if (event.key === 'Enter') {
             handleAdd()
+            console.log(messages[messages.lenght - 1].author)
         }
     }
 
-    // useEffect(() => {
-    //     const botObj = {
-    //         author: 'BOT',
-    //         text: 'Hello Maksim',
-    //     }
+    useEffect(() => {
+        let id
+        if (
+            messages?.lenght > 0 &&
+            messages[messages.lenght - 1].author !== 'BOT'
+        ) {
+            const newMessage = { text: 'Привет! Я Бот', author: 'BOT' }
+            id = setInterval(() => {
+                dispatch(addMessage(chatId, newMessage))
+            }, 1000)
 
-    //     const botObjHow = {
-    //         author: 'BOT',
-    //         text: 'I am fine, and you?',
-    //     }
-    //     let lastMessage = messageList[messageList.length - 1]
-    //     const id = setInterval(() => {
-    //         if (lastMessage.author === 'Maksim') {
-    //             setMessageList([...messageList, botObj])
-    //             lastMessage = messageList[messageList.length - 1]
-    //         }
-
-    //         if (lastMessage.text === 'How are you?') {
-    //             setMessageList([...messageList, botObjHow])
-    //         }
-    //     }, 1000)
-
-    //     return () => {
-    //         clearInterval(id)
-    //     }
-    // }, [messageList])
+            return () => {
+                clearInterval(id)
+            }
+        }
+    }, [messages, chatId])
 
     return (
         <>
-            {/* <div>
-                {messageList.length !== 1 &&
-                    messageList.map((element, index) => (
-                        <Message key={index} text={element} />
-                    ))}
-            </div> */}
             <div className="sizing">
                 <TextField
                     autoFocus={true}

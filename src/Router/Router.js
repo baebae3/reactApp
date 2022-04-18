@@ -17,7 +17,7 @@ const initialChats = {
         messages: [
             { text: 'Hello', author: 'Maksim' },
             { text: 'Test Chats', author: 'Maksim' },
-            { text: 'Something', author: 'Bot' },
+            { text: 'Something', author: 'BOT' },
         ],
     },
 }
