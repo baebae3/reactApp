@@ -1,14 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import React from 'react'
+import Router from './Router/Router'
 
 function App(props) {
-  return (
-    <div className="App">
-      <header className="App-header">
-
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <header className="App-header">
+                <React.StrictMode>
+                    <Router />
+                </React.StrictMode>
+            </header>
+        </div>
+    )
 }
 
-export default App;
+export default App

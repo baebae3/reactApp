@@ -1,38 +1,113 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.Chat-position {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.Chat-position h4 {
+    position: relative;
+    text-align: start;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.compStyle {
+    color: red;
+    border: 4px solid black;
+    padding: 50px;
+    background-color: rgba(80, 25, 151, 0.336);
+}
+
+.sizing {
+    display: flex;
+    gap: 20px;
+}
+
+.message-style {
+    border: 0px solid #66baf2;
+    border-radius: 25px;
+    margin: 0;
+    padding: 10px;
+    background-color: #66baf2;
+    margin: 5px;
+    text-align: start;
+}
+
+.message-style h3 {
+    padding: 0;
+    margin: 0;
+}
+
+.position {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.blockPosition {
+    display: flex;
+}
+
+.blockPosition__my {
+    justify-content: flex-end;
+}
+
+.blockPosition__any {
+    justify-content: flex-start;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.menu a {
+    color: #fff;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.ChatListPosition {
+    display: flex;
+    flex-direction: column;
 }
