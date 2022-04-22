@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Dialog } from '@mui/material'
 import { addChat, deleteChat } from '../store/chats/action'
 
-const ChatList = ({ addMessage }) => {
+const ChatList = () => {
     const chats = useSelector((state) => state.chats)
     const [chatName, setChatName] = useState('')
     const [visible, setVisible] = useState(false)
@@ -58,7 +58,6 @@ const ChatList = ({ addMessage }) => {
                                 </IconButton>
                             }
                         >
-                            <Button>delete</Button>
                             <ListItemAvatar>
                                 <Avatar />
                             </ListItemAvatar>

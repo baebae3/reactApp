@@ -3,15 +3,15 @@ import MessageList from '../components/MessageList'
 import { useParams } from 'react-router-dom'
 import ChatList from '../components/ChatList'
 
-const Chats = ({ chats, addMessage, deleteChat }) => {
+const Chats = () => {
     return (
         <div>
             <h4>список сообщений:</h4>
             <div className="wrapper">
-                <ChatList chats={chats} deleteChat={deleteChat} />
+                <ChatList />
                 <div className="messengerPanel">
-                    <MessageList chats={chats} />
-                    <ControlPanel addMessage={addMessage} />
+                    <MessageList />
+                    <ControlPanel />
                 </div>
             </div>
         </div>

@@ -1,12 +1,7 @@
 import { ADD_CHAT, DELETE_CHAT } from './action'
 
 const inititalState = {
-    chatList: [
-        {
-            name: 'test',
-            id: `id01`,
-        },
-    ],
+    chatList: [],
 }
 
 const chatsReducer = (state = inititalState, action) => {
