@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Dialog } from '@mui/material'
 import { addChat, deleteChat } from '../store/chats/action'
 
-const ChatList = ({ addMessage }) => {
+const ChatList = () => {
     const chats = useSelector((state) => state.chats)
     const [chatName, setChatName] = useState('')
     const [visible, setVisible] = useState(false)
@@ -28,10 +28,9 @@ const ChatList = ({ addMessage }) => {
         setVisible(true)
     }
 
-    // const handleDelete = () => {
-    //     dispatch(deleteChat())
-    //     console.log(chats.id)
-    // }
+    const handleDelete = (chatItem) => {
+        dispatch(deleteChat(chatItem))
+    }
 
     const handleClose = () => {
         setVisible(false)
@@ -46,12 +45,12 @@ const ChatList = ({ addMessage }) => {
         <>
             <List style={{ padding: '0px' }}>
                 {chats?.chatList.length > 0 ? (
-                    chats.chatList.map((chat) => (
+                    chats.chatList.map((chat, index) => (
                         <ListItem
-                            key={chat.id}
+                            key={index}
                             secondaryAction={
                                 <IconButton
-                                    // onClick={handleDelete()}
+                                    onClick={() => handleDelete(chat.id)}
                                     edge="end"
                                     aria-label="delete"
                                 >

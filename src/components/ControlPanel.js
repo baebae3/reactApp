@@ -3,7 +3,11 @@ import { useState, useRef, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import SendIcon from '@mui/icons-material/Send'
 import { useDispatch, useSelector } from 'react-redux'
-import { addMessage } from '../store/messages/action'
+import {
+    addMessageWithThunk,
+    addMessage,
+    addMessageWithSaga,
+} from '../store/messages/action'
 
 const ControlPanel = () => {
     const allMessages = useSelector((state) => state.messages.messageList)
@@ -24,7 +28,7 @@ const ControlPanel = () => {
             text: inputText,
             author: authorName,
         }
-        dispatch(addMessage(chatId, templateObj))
+        dispatch(addMessageWithThunk(chatId, templateObj))
         setInputText('')
         inputRef.current.focus()
     }
@@ -35,23 +39,6 @@ const ControlPanel = () => {
             console.log(messages[messages.lenght - 1].author)
         }
     }
-
-    useEffect(() => {
-        let id
-        if (
-            messages?.lenght > 0 &&
-            messages[messages.lenght - 1].author !== 'BOT'
-        ) {
-            const newMessage = { text: 'Привет! Я Бот', author: 'BOT' }
-            id = setInterval(() => {
-                dispatch(addMessage(chatId, newMessage))
-            }, 1000)
-
-            return () => {
-                clearInterval(id)
-            }
-        }
-    }, [messages, chatId])
 
     return (
         <>

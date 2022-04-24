@@ -2,11 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
-import { createTheme } from '@mui/material'
+import { CircularProgress, createTheme } from '@mui/material'
 import { orange, purple } from '@mui/material/colors'
 import { ThemeProvider } from '@emotion/react'
-import store from './store'
+import store, { persistor } from './store'
 import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
 
 const theme = createTheme({
     palette: {
@@ -27,9 +28,11 @@ const theme = createTheme({
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
-            <ThemeProvider theme={theme}>
-                <App />
-            </ThemeProvider>
+            <PersistGate persistor={persistor} loading={<CircularProgress />}>
+                <ThemeProvider theme={theme}>
+                    <App />
+                </ThemeProvider>
+            </PersistGate>
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')
