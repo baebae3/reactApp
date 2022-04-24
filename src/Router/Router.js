@@ -4,6 +4,7 @@ import Home from '../Pages/Home'
 import Profile from '../Pages/Profile'
 import '../App.css'
 import { useState } from 'react'
+import Gists from '../Pages/Gists'
 
 const Router = () => {
     return (
@@ -18,12 +19,16 @@ const Router = () => {
                 <li>
                     <Link to="/chats">Chats</Link>
                 </li>
+                <li>
+                    <Link to="/gists">Gists</Link>
+                </li>
             </ul>
 
             <Routes>
                 <Route path="/" exact element={<Home />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/chats/:chatId" element={<Chats />} />
+                <Route path="/gists" element={<Gists />} />
                 <Route path="*" element={<Chats />} />
             </Routes>
         </BrowserRouter>
